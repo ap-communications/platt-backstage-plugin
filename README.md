@@ -1,10 +1,12 @@
-# [Backstage](https://backstage.io)
+This rep contains the [Backstage](https://backstage.io/) plugins created and maintained by [AP Communications](https://www.ap-com.co.jp/). 
+We provide some services named 'Platt', it related to Backstage and platform engineering. 
 
-This is your newly scaffolded Backstage App, Good Luck!
+ The following plugins can be found within this pepo.
 
-To start the app, run:
+ - Cognitive search module for search-backend.
 
-```sh
-yarn install
-yarn dev
-```
+ Installation instructions for each plugins can be found in their indivisual README files.
+
+## License
+
+Copyright 2023 AP Communications Co.,Ltd. Licenced under the Apache Licence, Version 2.0: https://www.apache.org/licenses/LICENSE-2.0
