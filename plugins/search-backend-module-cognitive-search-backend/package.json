@@ -48,8 +48,21 @@
     "supertest": "^6.2.4"
   },
   "files": [
+    "LICENSE",
     "dist",
     "config.d.ts"
   ],
-  "configSchema": "config.d.ts"
+  "configSchema": "config.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ap-communications/platt-backstage-plugin.git",
+    "directory": "plugins/search-backend-module-cognitive-search-backend"
+  },
+  "keywords": [
+    "backstage",
+    "plugin",
+    "backend",
+    "azure",
+    "cognitive search"
+  ]
 }
