@@ -3,10 +3,10 @@ We provide some services named 'Platt', it related to Backstage and platform eng
 
  The following plugins can be found within this pepo.
 
- - Cognitive search module for search-backend.
+ - [Cognitive search module for search-backend](./plugins/search-backend-module-cognitive-search-backend/).
 
  Installation instructions for each plugins can be found in their indivisual README files.
 
 ## License
 
-Copyright 2023 AP Communications Co.,Ltd. Licenced under the Apache Licence, Version 2.0: https://www.apache.org/licenses/LICENSE-2.0
+Copyright 2023 AP Communications Co.,Ltd. Licenced under the [Apache Licence, Version 2.0](./LICENSE).
