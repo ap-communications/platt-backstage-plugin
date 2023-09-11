@@ -1,7 +1,7 @@
 # search-backend-module-cognitive-search
 
 This is an extension to module to [search-backend-node](https://github.com/backstage/backstage/tree/master/plugins/search-backend-node) plugin.
-This module provides functionality to index and implement querying using Azure Cognitive Search.
+This module provides functionality to index and implement querying using [Azure Cognitive Search](https://learn.microsoft.com/en-us/azure/search/).
 
 ## Getting Started
 
@@ -11,13 +11,13 @@ This module provides functionality to index and implement querying using Azure C
 
 ### Provision a Azure Cognitive Search service
 
-Following the [Azure Cognitive Search document](https://learn.microsoft.com/en-us/azure/search/search-what-is-azure-search), you can create an Azure Cognitive Search service using azure portal(or bicep files).
+Following the [Azure Cognitive Search document](https://learn.microsoft.com/en-us/azure/search/search-what-is-azure-search), you can create an Azure Cognitive Search service using azure portal(or bicep or any other tools).
 
 ### Assign roles to user or service principal
 
-This plugin uses [DefaultAzureCredential](https://www.npmjs.com/package/@azure/identity) of @azure/identity for authorizing access to Azure Cogntive Search service. So you can use user identity or service principal.
+This plugin is uses [DefaultAzureCredential](https://www.npmjs.com/package/@azure/identity) of @azure/identity for authorizing access to Azure Cognitive Search service. So you can use user identity or service principal.
 
-You should assigned [roles](https://learn.microsoft.com/en-us/azure/search/search-security-rbac?tabs=config-svc-portal%2Croles-portal%2Ctest-portal%2Ccustom-role-portal%2Cdisable-keys-portal#built-in-roles-used-in-search) below to user or principal.
+It is needed to assigned [roles](https://learn.microsoft.com/en-us/azure/search/search-security-rbac?tabs=config-svc-portal%2Croles-portal%2Ctest-portal%2Ccustom-role-portal%2Cdisable-keys-portal#built-in-roles-used-in-search) below to user or principal.
 
 
 - [Search Service Contributor](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#search-service-contributor) for creating the indexes.
@@ -36,9 +36,9 @@ yarn add --cwd packages/backend @platt/plugin-search-backend-module-cognitive-se
 
 ### Configure setting
 
-To enable this plugin, at least you should configure search.cognitiveSearch.endpoint attribute.
+To enable this plugin, at least you should configure `search.cognitiveSearch.endpoint`.
 
-Other optional attributes can be found in the config.d.ts at the top of this plugin folder. 
+Other optional configuration can be found in the [config.d.ts](./config.d.ts). 
 
 ```yaml
 search:
@@ -72,7 +72,7 @@ export default async function createPlugin(
 ```
 
 You can define `defaultAnalyzerName` for cognitive search indexes.
-For example our catalog or techdocs is written by Japanese, so we'd like to use 
+For example, our catalog or techdocs is written by Japanese, so we'd like to use 
 'ja.microsoft' analyzer.
 
 `defaultAnalyzerName` can be specifies the [supported language analyzers](https://learn.microsoft.com/en-us/azure/search/index-add-language-analyzers#supported-language-analyzers) of cognitive search.
@@ -150,11 +150,13 @@ export const catalogEntityIndexFields = (_analyzerName: string): CognitiveSearch
 
 ```
 
-Here is the actual sample for supporting additional type.
+You can find the full definitions [here](./src/client/defaultIndexFields.ts) for default document types.
+
+And here is the sample code for supporting additional type.
 
 ```typescript
 
-
+// add 2 types of additional documents
 const extraSchema1: CognitiveSearchIndexFields = [
   ...
 ];
@@ -171,7 +173,15 @@ CognitiveSearchSearchEngine.fromConfig<ExtendedDocumentType>(env.config, {
     })
 ```
 
-Additional schemas will be applied automatically.
+Extra schemas will be merged to default schemas applied automatically.
+
+
+```typescript
+const ExtendedDocumentType = SomeDocument | DefaultBackstageSearchDocuments;
+```
+
+Here is the type definition of document types, and it will be applied through the type generis of fromConfig function.
+
 
 ## License
 
