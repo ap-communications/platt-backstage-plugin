@@ -53,6 +53,6 @@
   },
   "packageManager": "yarn@3.6.3",
   "dependencies": {
-    "@platt/plugin-search-backend-module-cognitive-search-backend": "workspace:^"
+    "@platt/plugin-search-backend-module-cognitive-search": "workspace:^"
   }
 }

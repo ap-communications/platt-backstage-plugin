@@ -30,7 +30,7 @@ It is needed to assigned [roles](https://learn.microsoft.com/en-us/azure/search/
 Install the plugin to backstage backend.
 
 ```bash
-yarn add --cwd packages/backend @platt/plugin-search-backend-module-cognitive-search-backend
+yarn add --cwd packages/backend @platt/plugin-search-backend-module-cognitive-search
 
 ```
 
@@ -52,7 +52,7 @@ search:
 Here is the sample code for using Cognitive Search plugin.
 
 ```typescript
-import { CognitiveSearchSearchEngine } from '@platt/plugin-search-backend-module-cognitive-search-backend';
+import { CognitiveSearchSearchEngine } from '@platt/plugin-search-backend-module-cognitive-search';
 
 export default async function createPlugin(
   env: PluginEnvironment,
