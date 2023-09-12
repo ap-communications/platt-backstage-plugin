@@ -1,0 +1,76 @@
+name: publish
+on:
+  push:
+    tags:
+      - 'release-*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: yarn install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install --immutable
+      - name: yarn tsc
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: tsc
+      - name: yarn build
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: build:all
+
+  release:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    environment: npm-platt-oss
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: 'https://registry.npmjs.org'
+      - name: yarn install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install --immutable
+      - name: yarn tsc
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: tsc
+      - name: yarn build repo
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: backstage-cli repo build
+
+      - name: publish
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: workspaces foreach -p -j 10 -v --no-private npm publish --access public --tolerate-republish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # add tags to repository
