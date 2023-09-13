@@ -1,6 +1,6 @@
 {
   "name": "@platt/plugin-search-backend-module-cognitive-search",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "main": "src/index.ts",
   "types": "src/index.ts",
   "license": "Apache-2.0",
@@ -52,10 +52,11 @@
     "config.d.ts"
   ],
   "configSchema": "config.d.ts",
+  "homepage": "https://github.com/ap-communications/platt-backstage-plugin/tree/main/plugins/search-backend-module-cognitive-search-backend",
   "repository": {
     "type": "git",
     "url": "https://github.com/ap-communications/platt-backstage-plugin.git",
-    "directory": "plugins/search-backend-module-cognitive-search"
+    "directory": "plugins/search-backend-module-cognitive-search-backend"
   },
   "keywords": [
     "backstage",

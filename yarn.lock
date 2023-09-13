@@ -6637,9 +6637,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@platt/plugin-search-backend-module-cognitive-search@^0.1.0, @platt/plugin-search-backend-module-cognitive-search@workspace:^, @platt/plugin-search-backend-module-cognitive-search@workspace:plugins/search-backend-module-cognitive-search-backend":
+"@platt/plugin-search-backend-module-cognitive-search@npm:^0.1.0":
+  version: 0.1.1
+  resolution: "@platt/plugin-search-backend-module-cognitive-search@npm:0.1.1"
+  dependencies:
+    "@azure/identity": ^3.3.0
+    "@azure/search-documents": ^11.3.2
+    "@backstage/backend-common": ^0.19.4
+    "@backstage/backend-plugin-api": ^0.6.2
+    "@backstage/config": ^1.0.8
+    "@backstage/plugin-catalog-common": ^1.0.15
+    "@backstage/plugin-search-backend-node": ^1.2.6
+    "@backstage/plugin-search-common": ^1.2.5
+    "@backstage/plugin-techdocs-node": ^1.7.6
+    "@types/express": "*"
+    express: ^4.17.1
+    express-promise-router: ^4.1.0
+    node-fetch: ^2.6.7
+    p-queue: ^6.6.2
+    uuid: ^9.0.0
+    winston: ^3.2.1
+    yn: ^4.0.0
+  checksum: f595e4abb416cdc905970cb4cd37734338ef7db2d93d5f34563c3e59645c2dd301a1aa26d68145714427508ab98cd565f3f6e39603d38c17bcdb60e9eb116f6b
+  languageName: node
+  linkType: hard
+
+"@platt/plugin-search-backend-module-cognitive-search@workspace:^, @platt/plugin-search-backend-module-cognitive-search@workspace:plugins/search-backend-module-cognitive-search":
   version: 0.0.0-use.local
-  resolution: "@platt/plugin-search-backend-module-cognitive-search@workspace:plugins/search-backend-module-cognitive-search-backend"
+  resolution: "@platt/plugin-search-backend-module-cognitive-search@workspace:plugins/search-backend-module-cognitive-search"
   dependencies:
     "@azure/identity": ^3.3.0
     "@azure/search-documents": ^11.3.2
