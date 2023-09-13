@@ -1,4 +1,3 @@
-import { Writable } from 'stream';
 import { v4 as uuid } from 'uuid';
 import { SearchOptions } from '@azure/search-documents';
 import { Config } from '@backstage/config';
@@ -77,7 +76,7 @@ export class CognitiveSearchSearchEngine<T extends IndexableDocument = DefaultBa
 
   }
 
-  getIndexer(type: string): Promise<Writable> {
+  getIndexer(type: string) {
     const indexerLogger = this.logger.child({ documentType: type});
 
     return Promise.resolve(new CognitiveSearchSearchEngineIndexer<T>({
