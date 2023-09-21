@@ -1,0 +1,44 @@
+name: Changeset
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-release-pr:
+    name: Create Changeset PR
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+      - name: Restore yarn cache
+        uses: actions/cache@v3
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: yarn-cache-folder-${{ hashFiles('**/yarn.lock', '.yarnrc.yml') }}
+          restore-keys: |
+            yarn-cache-folder-
+
+      - name: Run install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install # will run `yarn install` command
+      - name: Create Release Pull Request
+        uses: changesets/action@v1
+        with:
+          # Calls out to `changeset version`, but also runs prettier
+          version: yarn release
+          title: Version Packages - plugins
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
