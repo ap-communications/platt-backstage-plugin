@@ -24,13 +24,13 @@
   "dependencies": {
     "@azure/identity": "^3.3.0",
     "@azure/search-documents": "^11.3.2",
-    "@backstage/backend-common": "^0.19.8",
-    "@backstage/backend-plugin-api": "^0.6.6",
+    "@backstage/backend-common": "^0.19.9",
+    "@backstage/backend-plugin-api": "^0.6.7",
     "@backstage/config": "^1.1.1",
-    "@backstage/plugin-catalog-common": "^1.0.17",
-    "@backstage/plugin-search-backend-node": "^1.2.10",
-    "@backstage/plugin-search-common": "^1.2.7",
-    "@backstage/plugin-techdocs-node": "^1.9.0",
+    "@backstage/plugin-catalog-common": "^1.0.18",
+    "@backstage/plugin-search-backend-node": "^1.2.11",
+    "@backstage/plugin-search-common": "^1.2.8",
+    "@backstage/plugin-techdocs-node": "^1.10.0",
     "@types/express": "*",
     "express": "^4.17.1",
     "express-promise-router": "^4.1.0",
@@ -41,7 +41,7 @@
     "yn": "^4.0.0"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.23.1",
+    "@backstage/cli": "^0.24.0",
     "@types/supertest": "^2.0.12",
     "msw": "^1.0.0",
     "supertest": "^6.2.4"
