@@ -1,14 +1,17 @@
 import { Config } from '@backstage/config';
-import { IndexableDocument } from '@backstage/plugin-search-common';
 import { SearchOptions } from '@azure/search-documents';
 import {
   AzureCredentailOption,
   CognitiveSearchClient,
   IndexClientOption
 } from './CognitiveSearchClient';
-import { CognitiveSearchDocument, CognitiveSearchLogger } from '../types';
+import {
+  CognitiveSearchDocument,
+  CognitiveSearchLogger,
+  DefaultBackstageSearchDocuments
+} from '../types';
 
-export class SearchClient<T extends IndexableDocument> extends CognitiveSearchClient<T> {
+export class SearchClient<T extends DefaultBackstageSearchDocuments> extends CognitiveSearchClient<T> {
   private constructor(
     logger: CognitiveSearchLogger,
     indexOption: IndexClientOption,
@@ -17,7 +20,7 @@ export class SearchClient<T extends IndexableDocument> extends CognitiveSearchCl
     super(logger, indexOption, credentialOption);
   }
 
-  static fromConfig<T extends IndexableDocument>(
+  static fromConfig<T extends DefaultBackstageSearchDocuments>(
     c: Config,
     option: {
       logger: CognitiveSearchLogger;

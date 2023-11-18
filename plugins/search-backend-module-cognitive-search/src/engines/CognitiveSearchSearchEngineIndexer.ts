@@ -1,9 +1,8 @@
 import { Config } from '@backstage/config';
 import { BatchSearchEngineIndexer } from '@backstage/plugin-search-backend-node';
-import { IndexableDocument } from '@backstage/plugin-search-common';
 import { IndexClient } from '../client';
 import {
-  CognitiveSearchIndexFields,
+  CognitiveSearchIndexOption,
   CognitiveSearchLogger,
   CognitiveSearchSearchEngineIndexerOption,
   DefaultBackstageSearchDocuments
@@ -11,14 +10,14 @@ import {
 
 const DEFAULT_BATCH_SIZE = 1000;
 
-export class CognitiveSearchSearchEngineIndexer<T extends IndexableDocument = DefaultBackstageSearchDocuments> extends BatchSearchEngineIndexer {
+export class CognitiveSearchSearchEngineIndexer<T extends DefaultBackstageSearchDocuments = DefaultBackstageSearchDocuments> extends BatchSearchEngineIndexer {
   private readonly config: Config;
   private readonly type: string;
   private readonly logger: CognitiveSearchLogger;
-  private readonly searchIndexDefinitions?: CognitiveSearchIndexFields[];
+  private readonly searchIndexDefinitions?: CognitiveSearchIndexOption<T>[];
   private client?: IndexClient<T>
 
-  constructor(private options: CognitiveSearchSearchEngineIndexerOption) {
+  constructor(private options: CognitiveSearchSearchEngineIndexerOption<T>) {
     super({ batchSize: options.batchSize || DEFAULT_BATCH_SIZE });
     this.config = options.config;
     this.type = options.type;
