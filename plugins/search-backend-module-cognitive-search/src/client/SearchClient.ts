@@ -29,7 +29,7 @@ export class SearchClient<T extends IndexableDocument> extends CognitiveSearchCl
     return new SearchClient<T>(option.logger, searchOption, credentialOption);
   }
 
-  async search(keyword: string, options?: SearchOptions<keyof CognitiveSearchDocument<T>>) {
+  async search(keyword: string, options?: SearchOptions<CognitiveSearchDocument<T>>) {
     this.logger.debug(`Searching keyword: ${keyword}`);
     return this.getSearchClient().search(keyword, options);
   }
