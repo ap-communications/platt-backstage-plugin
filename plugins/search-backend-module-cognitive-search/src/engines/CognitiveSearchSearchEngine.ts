@@ -19,7 +19,7 @@ import { CognitiveSearchSearchEngineIndexer } from './CognitiveSearchSearchEngin
 
 export type CongnitiveSearchConcreateQuery<T extends IndexableDocument> = {
   keyword: string;
-  options?: SearchOptions<keyof CognitiveSearchDocument<T>>;
+  options?: SearchOptions<CognitiveSearchDocument<T>>;
 }
 
 export type CognitiveSearchQueryTransltor<T extends IndexableDocument> = (

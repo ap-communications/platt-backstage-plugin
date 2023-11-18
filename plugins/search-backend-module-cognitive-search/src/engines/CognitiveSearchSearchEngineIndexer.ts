@@ -37,14 +37,27 @@ export class CognitiveSearchSearchEngineIndexer<T extends IndexableDocument = De
   }
 
   index(documents: T[]): Promise<void> {
-    return this.getIndexClient().upsertDocuments(this.type, documents);
+    try {
+      this.logger.debug(`Indexing ${documents.length} documents`);
+      return this.getIndexClient().upsertDocuments(this.type, documents);
+    } catch (err) {
+      this.logger.warn(`Failed to index documents ${err}`)
+      throw err;
+    }
   }
 
   async initialize(): Promise<void> {
-    await this.getIndexClient().setupIndex(this.searchIndexDefinitions);
+    try {
+      this.logger.debug('Initializing search engine indexer');
+      await this.getIndexClient().setupIndex(this.searchIndexDefinitions);  
+    } catch (err) {
+      this.logger.warn(`Failed to initialize search engine indexer ${err}`);
+      throw err;
+    }
   }
 
   finalize(): Promise<void> {
+    this.logger.debug('Finalizing search engine indexer');
     return Promise.resolve();
   }
 }
