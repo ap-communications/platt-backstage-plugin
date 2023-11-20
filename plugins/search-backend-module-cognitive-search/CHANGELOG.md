@@ -1,5 +1,22 @@
 # @platt/plugin-search-backend-module-cognitive-search
 
+## 1.3.0
+
+### Minor Changes
+
+- 4dcd7a8: Ensure the document shcemas for storing in cognitive-search
+
+  breaking change.
+  Cognitive search is not able to accept unknown properties of the document. To ensure document will be matched as schema entirely, I added `CognitiveSearchIndexTransformer`.
+  Please read the document(README.md) of plugin if you added additional document types.
+
+- fb34fcc: bump backstage from v1.19.5 to v1.20.2
+
+### Patch Changes
+
+- e77b975: bump @azure/identity from 3.3.0 to 3.4.1
+- 553c268: bump @azure/identity to 4.0.0 and @azure/search-documents to 12.0.0
+
 ## 1.2.0
 
 ### Minor Changes
