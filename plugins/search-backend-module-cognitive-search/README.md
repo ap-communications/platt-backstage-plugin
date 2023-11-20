@@ -157,30 +157,46 @@ And here is the sample code for supporting additional type.
 ```typescript
 
 // add 2 types of additional documents
+const ExtendedDocumentType = SomeDocument1 | SomeDocument2 | DefaultBackstageSearchDocuments;
+
 const extraSchema1: CognitiveSearchIndexFields = [
   ...
 ];
+const extranSchema1Transformer: CognitiveSearchIndexTransformer<SomeDocument1> = (data) => {
+  return {
+    ...
+  };
+};
+
 const extraSchema2: CognitiveSearchIndexFields = [
   ...
 ];
+const extranSchema1Transformer: CognitiveSearchIndexTransformer<SomeDocument2> = (data) => {
+  return {
+    ...
+  };
+};
 
-const ExtendedDocumentType = SomeDocument | DefaultBackstageSearchDocuments;
 
 CognitiveSearchSearchEngine.fromConfig<ExtendedDocumentType>(env.config, {
       logger: env.logger,
       defaultAnalyzerName: 'ja.microsoft',
-      searchIndexDefinitions: [ extraSchema1, extraSchema2 ],
+      searchIndexDefinitions: [
+        {
+          type: 'docType1',
+          transformer: extranSchema1Transformer,
+          fields: extraSchema1
+        },
+        {
+          type: 'docType2',
+          transformer: extranSchema2Transformer,
+          fields: extraSchema2
+        }
     })
 ```
 
 Extra schemas will be merged to default schemas applied automatically.
 
-
-```typescript
-const ExtendedDocumentType = SomeDocument | DefaultBackstageSearchDocuments;
-```
-
-Here is the type definition of document types, and it will be applied through the type generis of fromConfig function.
 
 
 ## License

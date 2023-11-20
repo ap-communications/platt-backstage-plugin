@@ -8,11 +8,13 @@ import {
   SearchIndexClient,
   SearchIndexingBufferedSender
 } from '@azure/search-documents';
-import { IndexableDocument } from '@backstage/plugin-search-common';
 import {
   CognitiveSearchDocument,
   CognitiveSearchIndexFields,
-  CognitiveSearchLogger
+  CognitiveSearchIndexOption,
+  CognitiveSearchIndexTransformer,
+  CognitiveSearchLogger,
+  DefaultBackstageSearchDocuments,
 } from '../types';
 import {
   AzureCredentailOption,
@@ -22,14 +24,18 @@ import {
 import {
   catalogEntityIndexFields,
   defaultIndexableFields,
-  techDocsIndexFields
+  entityIndexTransformer,
+  entityIndexerType,
+  techDocsIndexFields,
+  techDocsIndexerType,
 } from './defaultIndexFields';
 
 const generateHash = (type: string, location: string) => crypto.createHash('sha256').update(`${type}:${location}`).digest('hex');
 const generateEtag = (o: string) => crypto.createHash('sha256').update(o).digest('hex');
 
-export class IndexClient<T extends IndexableDocument> extends CognitiveSearchClient<T> {
+export class IndexClient<T extends DefaultBackstageSearchDocuments> extends CognitiveSearchClient<T> {
   private indexClient?: SearchIndexClient;
+  private transformerMap?: Map<string, CognitiveSearchIndexTransformer<any>>;
   private static queue: PQueue = new PQueue({ concurrency: 1 });
 
   private constructor(
@@ -41,7 +47,7 @@ export class IndexClient<T extends IndexableDocument> extends CognitiveSearchCli
     super(logger, indexOption, credentialOption);
   }
 
-  static fromConfig<T extends IndexableDocument>(
+  static fromConfig<T extends DefaultBackstageSearchDocuments>(
     c: Config,
     option: {
       logger: CognitiveSearchLogger;
@@ -54,7 +60,8 @@ export class IndexClient<T extends IndexableDocument> extends CognitiveSearchCli
     return new IndexClient<T>(option.logger, searchOption, option.analyzerName || KnownAnalyzerNames.EnLucene, credentialOption);
   }
 
-  async setupIndex(definitions?: CognitiveSearchIndexFields[]) {
+  async setupIndex(definitions?: CognitiveSearchIndexOption<T>[]) {
+    this.transformerMap = this.mergeIndexerTransfomerMap(definitions || []);
     return new Promise<void>((resolve, reject) => {
       IndexClient.queue.add(async () => {
         await this.upsertIndex(definitions)
@@ -64,17 +71,31 @@ export class IndexClient<T extends IndexableDocument> extends CognitiveSearchCli
     });
   }
 
-  mergeSearchFieldDefinitions(definitions: CognitiveSearchIndexFields[]) {
+  mergeSearchFieldDefinitions(definitions: CognitiveSearchIndexOption<T>[]) {
+    const fields = definitions.map(d => d.fields).flat();
     const allDefinitions: CognitiveSearchIndexFields = [
       ...defaultIndexableFields(this.analyzerName),
       ...catalogEntityIndexFields(this.analyzerName),
       ...techDocsIndexFields(this.analyzerName),
-      ...definitions.flat()
+      ...fields
     ];
     return Array.from(new Map(allDefinitions.map(item => [item.name, item])).values());
   }
 
-  protected async upsertIndex(definitions?: CognitiveSearchIndexFields[]) {
+  mergeIndexerTransfomerMap(definitions: CognitiveSearchIndexOption<T>[]) {
+    const transformerMap = new Map<string, CognitiveSearchIndexTransformer<any>>([
+      [ entityIndexerType, entityIndexTransformer ],
+      [ techDocsIndexerType, entityIndexTransformer ],
+    ]);
+    definitions
+      .filter(d => !!d.transformer)
+      .map(d => {
+        transformerMap.set(d.type, d.transformer!);
+      });
+    return transformerMap;
+  }
+
+  protected async upsertIndex(definitions?: CognitiveSearchIndexOption<T>[]) {
     const fields = this.mergeSearchFieldDefinitions(definitions || []);
     const searchField: SearchField[] = [
       {
@@ -128,16 +149,27 @@ export class IndexClient<T extends IndexableDocument> extends CognitiveSearchCli
     );
 
     try {  
-      await bufferedClient.uploadDocuments(documents.map(document => ({
-        type,
-        key: generateHash(type, document.location),
-        document
-      })));
+      await bufferedClient.uploadDocuments(documents.map(document => {
+        // const d = document as any;
+        // delete d.annotations;
+        const d: T = this.transformerMap?.get(type)?.(document) || document;
+        return {
+          type,
+          key: generateHash(type, document.location),
+          document: d,
+        }
+      }));
       await bufferedClient.flush();
     } catch(e) {
+      this.logger.warn(`Failed to upsert documents to ${this.indexOption.indexName} ${e}`);
       throw e;
     } finally {
-      await bufferedClient.dispose();
+      try {
+        await bufferedClient.dispose();
+      } catch (e) {
+        // log error but do not throw
+        this.logger.warn(`Failed to dispose buffered client ${e}`);
+      }
     }
   }
 }

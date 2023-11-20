@@ -2,7 +2,6 @@ import { v4 as uuid } from 'uuid';
 import { SearchOptions } from '@azure/search-documents';
 import { Config } from '@backstage/config';
 import {
-  IndexableDocument,
   IndexableResultSet,
   Result,
   SearchEngine,
@@ -10,19 +9,19 @@ import {
 } from '@backstage/plugin-search-common';
 import {
   CognitiveSearchDocument,
-  CognitiveSearchIndexFields,
+  CognitiveSearchIndexOption,
   CognitiveSearchLogger,
   DefaultBackstageSearchDocuments
 } from '../types';
 import { SearchClient } from '../client';
 import { CognitiveSearchSearchEngineIndexer } from './CognitiveSearchSearchEngineIndexer';
 
-export type CongnitiveSearchConcreateQuery<T extends IndexableDocument> = {
+export type CongnitiveSearchConcreateQuery<T extends DefaultBackstageSearchDocuments> = {
   keyword: string;
   options?: SearchOptions<CognitiveSearchDocument<T>>;
 }
 
-export type CognitiveSearchQueryTransltor<T extends IndexableDocument> = (
+export type CognitiveSearchQueryTransltor<T extends DefaultBackstageSearchDocuments> = (
   query: SearchQuery,
   options?: CognitiveSearchQueryTranslatorOption
 ) => CongnitiveSearchConcreateQuery<T>;
@@ -43,17 +42,17 @@ export const decodePageCursor = (cursor?: string): number => cursor
   ? Number(Buffer.from(cursor, 'base64').toString('utf-8'))
   : 0;
 
-export class CognitiveSearchSearchEngine<T extends IndexableDocument = DefaultBackstageSearchDocuments> implements SearchEngine {
+export class CognitiveSearchSearchEngine<T extends DefaultBackstageSearchDocuments = DefaultBackstageSearchDocuments> implements SearchEngine {
   private logger: CognitiveSearchLogger;
   private client?: SearchClient<T>;
-  private searchIndexDefinitions?: CognitiveSearchIndexFields[];
+  private searchIndexDefinitions?: CognitiveSearchIndexOption<T>[];
   private readonly translatorOption: CognitiveSearchQueryTranslatorOption;
   private defaultAnalyzerName?: string;
 
   private constructor(private options: {
     config: Config;
     logger: CognitiveSearchLogger;
-    searchIndexDefinitions?: CognitiveSearchIndexFields[];
+    searchIndexDefinitions?: CognitiveSearchIndexOption<T>[];
     defaultAnalyzerName?: string;
   }) {
     this.logger = options.logger;
@@ -128,9 +127,9 @@ export class CognitiveSearchSearchEngine<T extends IndexableDocument = DefaultBa
     };
   }
 
-  static fromConfig<T extends IndexableDocument = DefaultBackstageSearchDocuments>(config: Config, options: {
+  static fromConfig<T extends DefaultBackstageSearchDocuments = DefaultBackstageSearchDocuments>(config: Config, options: {
     logger: CognitiveSearchLogger;
-    searchIndexDefinitions?: CognitiveSearchIndexFields[];
+    searchIndexDefinitions?: CognitiveSearchIndexOption<T>[];
     defaultAnalyzerName?: string;
     translator?: CognitiveSearchQueryTransltor<T>;
   }): CognitiveSearchSearchEngine<T> {
