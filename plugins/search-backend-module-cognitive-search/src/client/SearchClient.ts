@@ -8,10 +8,10 @@ import {
 import {
   CognitiveSearchDocument,
   CognitiveSearchLogger,
-  DefaultBackstageSearchDocuments
 } from '../types';
+import { IndexableDocument } from '@backstage/plugin-search-common';
 
-export class SearchClient<T extends DefaultBackstageSearchDocuments> extends CognitiveSearchClient<T> {
+export class SearchClient<T extends IndexableDocument> extends CognitiveSearchClient<T> {
   private constructor(
     logger: CognitiveSearchLogger,
     indexOption: IndexClientOption,
@@ -20,7 +20,7 @@ export class SearchClient<T extends DefaultBackstageSearchDocuments> extends Cog
     super(logger, indexOption, credentialOption);
   }
 
-  static fromConfig<T extends DefaultBackstageSearchDocuments>(
+  static fromConfig<T extends IndexableDocument>(
     c: Config,
     option: {
       logger: CognitiveSearchLogger;

@@ -2,7 +2,6 @@ import { CatalogEntityDocument } from '@backstage/plugin-catalog-common';
 import {
   CognitiveSearchIndexFields,
   CognitiveSearchIndexTransformer,
-  DefaultBackstageSearchDocuments
 } from '../types';
 import { IndexableDocument } from '@backstage/plugin-search-common';
 import { TechDocsDocument } from '@backstage/plugin-techdocs-node';
@@ -47,7 +46,7 @@ export const defaultIndexableFields = (analyzerName: string): CognitiveSearchInd
   }
 ]);
 
-export const indexableDocumentTransformer = <T extends DefaultBackstageSearchDocuments>(data: T): IndexableDocument => {
+export const indexableDocumentTransformer = <T extends IndexableDocument>(data: T): IndexableDocument => {
   return {
     title: data.title,
     text: data.text,
@@ -108,7 +107,8 @@ export const catalogEntityIndexFields = (_analyzerName: string): CognitiveSearch
   },
 ]);
 
-export const entityIndexTransformer: CognitiveSearchIndexTransformer<CatalogEntityDocument> = (entity) => {
+export const entityIndexTransformer: CognitiveSearchIndexTransformer<CatalogEntityDocument> = (data) => {
+  const entity = data as CatalogEntityDocument;
   return {
     ...indexableDocumentTransformer(entity),
     componentType: entity.componentType,
@@ -177,14 +177,15 @@ export const techDocsIndexFields = (_analyzerName: string): CognitiveSearchIndex
 ]);
 
 export const techDocsIndexTransformer: CognitiveSearchIndexTransformer<TechDocsDocument> = (data: TechDocsDocument): TechDocsDocument => {
+  const doc = data as TechDocsDocument;
   return {
-    ...indexableDocumentTransformer(data),
-    kind: data.kind,
-    namespace: data.namespace,
-    name: data.name,
-    lifecycle: data.lifecycle,
-    owner: data.owner,
-    path: data.path,
+    ...indexableDocumentTransformer(doc),
+    kind: doc.kind,
+    namespace: doc.namespace,
+    name: doc.name,
+    lifecycle: doc.lifecycle,
+    owner: doc.owner,
+    path: doc.path,
   };
 };
 

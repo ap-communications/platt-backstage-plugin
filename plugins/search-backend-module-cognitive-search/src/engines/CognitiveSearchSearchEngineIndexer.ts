@@ -7,10 +7,11 @@ import {
   CognitiveSearchSearchEngineIndexerOption,
   DefaultBackstageSearchDocuments
 } from '../types';
+import { IndexableDocument } from '@backstage/plugin-search-common';
 
 const DEFAULT_BATCH_SIZE = 1000;
 
-export class CognitiveSearchSearchEngineIndexer<T extends DefaultBackstageSearchDocuments = DefaultBackstageSearchDocuments> extends BatchSearchEngineIndexer {
+export class CognitiveSearchSearchEngineIndexer<T extends IndexableDocument = DefaultBackstageSearchDocuments> extends BatchSearchEngineIndexer {
   private readonly config: Config;
   private readonly type: string;
   private readonly logger: CognitiveSearchLogger;

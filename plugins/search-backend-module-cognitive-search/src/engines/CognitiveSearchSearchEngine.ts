@@ -2,6 +2,7 @@ import { v4 as uuid } from 'uuid';
 import { SearchOptions } from '@azure/search-documents';
 import { Config } from '@backstage/config';
 import {
+  IndexableDocument,
   IndexableResultSet,
   Result,
   SearchEngine,
@@ -16,12 +17,12 @@ import {
 import { SearchClient } from '../client';
 import { CognitiveSearchSearchEngineIndexer } from './CognitiveSearchSearchEngineIndexer';
 
-export type CongnitiveSearchConcreateQuery<T extends DefaultBackstageSearchDocuments> = {
+export type CongnitiveSearchConcreateQuery<T extends IndexableDocument> = {
   keyword: string;
   options?: SearchOptions<CognitiveSearchDocument<T>>;
 }
 
-export type CognitiveSearchQueryTransltor<T extends DefaultBackstageSearchDocuments> = (
+export type CognitiveSearchQueryTransltor<T extends IndexableDocument> = (
   query: SearchQuery,
   options?: CognitiveSearchQueryTranslatorOption
 ) => CongnitiveSearchConcreateQuery<T>;
@@ -42,7 +43,7 @@ export const decodePageCursor = (cursor?: string): number => cursor
   ? Number(Buffer.from(cursor, 'base64').toString('utf-8'))
   : 0;
 
-export class CognitiveSearchSearchEngine<T extends DefaultBackstageSearchDocuments = DefaultBackstageSearchDocuments> implements SearchEngine {
+export class CognitiveSearchSearchEngine<T extends IndexableDocument = DefaultBackstageSearchDocuments> implements SearchEngine {
   private logger: CognitiveSearchLogger;
   private client?: SearchClient<T>;
   private searchIndexDefinitions?: CognitiveSearchIndexOption<T>[];
@@ -127,7 +128,7 @@ export class CognitiveSearchSearchEngine<T extends DefaultBackstageSearchDocumen
     };
   }
 
-  static fromConfig<T extends DefaultBackstageSearchDocuments = DefaultBackstageSearchDocuments>(config: Config, options: {
+  static fromConfig<T extends IndexableDocument = DefaultBackstageSearchDocuments>(config: Config, options: {
     logger: CognitiveSearchLogger;
     searchIndexDefinitions?: CognitiveSearchIndexOption<T>[];
     defaultAnalyzerName?: string;

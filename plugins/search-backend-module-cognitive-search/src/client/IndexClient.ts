@@ -8,13 +8,13 @@ import {
   SearchIndexClient,
   SearchIndexingBufferedSender
 } from '@azure/search-documents';
+import { IndexableDocument } from '@backstage/plugin-search-common';
 import {
   CognitiveSearchDocument,
   CognitiveSearchIndexFields,
   CognitiveSearchIndexOption,
   CognitiveSearchIndexTransformer,
   CognitiveSearchLogger,
-  DefaultBackstageSearchDocuments,
 } from '../types';
 import {
   AzureCredentailOption,
@@ -34,9 +34,9 @@ import {
 const generateHash = (type: string, location: string) => crypto.createHash('sha256').update(`${type}:${location}`).digest('hex');
 const generateEtag = (o: string) => crypto.createHash('sha256').update(o).digest('hex');
 
-export class IndexClient<T extends DefaultBackstageSearchDocuments> extends CognitiveSearchClient<T> {
+export class IndexClient<T extends IndexableDocument> extends CognitiveSearchClient<T> {
   private indexClient?: SearchIndexClient;
-  private transformerMap?: Map<string, CognitiveSearchIndexTransformer<any>>;
+  private transformerMap?: Map<string, CognitiveSearchIndexTransformer<T>>;
   private static queue: PQueue = new PQueue({ concurrency: 1 });
 
   private constructor(
@@ -48,7 +48,7 @@ export class IndexClient<T extends DefaultBackstageSearchDocuments> extends Cogn
     super(logger, indexOption, credentialOption);
   }
 
-  static fromConfig<T extends DefaultBackstageSearchDocuments>(
+  static fromConfig<T extends IndexableDocument>(
     c: Config,
     option: {
       logger: CognitiveSearchLogger;
@@ -88,6 +88,7 @@ export class IndexClient<T extends DefaultBackstageSearchDocuments> extends Cogn
       [ entityIndexerType, entityIndexTransformer ],
       [ techDocsIndexerType, techDocsIndexTransformer ],
     ]);
+
     definitions
       .filter(d => !!d.transformer)
       .map(d => {
@@ -151,12 +152,11 @@ export class IndexClient<T extends DefaultBackstageSearchDocuments> extends Cogn
 
     try {  
       await bufferedClient.uploadDocuments(documents.map(document => {
-        // const d = document as any;
-        // delete d.annotations;
-        const d: T = this.transformerMap?.get(type)?.(document) || document;
+
+        const d = this.transformerMap?.get(type)?.(document) ?? document;
         return {
           type,
-          key: generateHash(type, document.location),
+          key: generateHash(type, d.location),
           document: d,
         }
       }));
