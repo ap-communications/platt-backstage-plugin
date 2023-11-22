@@ -27,6 +27,7 @@ import {
   entityIndexTransformer,
   entityIndexerType,
   techDocsIndexFields,
+  techDocsIndexTransformer,
   techDocsIndexerType,
 } from './defaultIndexFields';
 
@@ -85,7 +86,7 @@ export class IndexClient<T extends DefaultBackstageSearchDocuments> extends Cogn
   mergeIndexerTransfomerMap(definitions: CognitiveSearchIndexOption<T>[]) {
     const transformerMap = new Map<string, CognitiveSearchIndexTransformer<any>>([
       [ entityIndexerType, entityIndexTransformer ],
-      [ techDocsIndexerType, entityIndexTransformer ],
+      [ techDocsIndexerType, techDocsIndexTransformer ],
     ]);
     definitions
       .filter(d => !!d.transformer)
