@@ -1,5 +1,12 @@
 # @platt/plugin-search-backend-module-cognitive-search
 
+## 1.3.1
+
+### Patch Changes
+
+- afb485b: Bug fix: It could not be added additional document type to index #59
+- c7071de: bugfix use techDocs index transformer for techdocs
+
 ## 1.3.0
 
 ### Minor Changes
