@@ -4,8 +4,8 @@ import { Config } from '@backstage/config';
 import {
   CognitiveSearchDocument,
   CognitiveSearchLogger,
-  DefaultBackstageSearchDocuments
 } from '../types';
+import { IndexableDocument } from '@backstage/plugin-search-common';
 
 export interface AzureCredentailOption {
   tenantId: string;
@@ -20,7 +20,7 @@ export interface IndexClientOption {
 
 const DEFAULT_INDEX_NAME = 'backstage-index';
 
-export abstract class CognitiveSearchClient<T extends DefaultBackstageSearchDocuments> {
+export abstract class CognitiveSearchClient<T extends IndexableDocument> {
   private client?: SearchClient<CognitiveSearchDocument<T>>;
   protected readonly credential: ClientSecretCredential | DefaultAzureCredential;
 
