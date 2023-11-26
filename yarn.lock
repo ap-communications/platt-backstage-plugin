@@ -10554,11 +10554,11 @@ __metadata:
   linkType: hard
 
 "@types/react-dom@npm:^17":
-  version: 17.0.23
-  resolution: "@types/react-dom@npm:17.0.23"
+  version: 17.0.25
+  resolution: "@types/react-dom@npm:17.0.25"
   dependencies:
     "@types/react": ^17
-  checksum: 20c3caadc653c47806d8eb9bfe1bc5c259bd8d05158bd9cc71f42277a0425f0bf461d45c08648bac6d9fb468536d0b0b28fe548541c95c157de72a4487f7af97
+  checksum: d1e582682478e0848c8d54ea3e89d02047bac6d916266b85ce63731b06987575919653ea7159d98fda47ade3362b8c4d5796831549564b83088e7aa9ce8b60ed
   languageName: node
   linkType: hard
 
