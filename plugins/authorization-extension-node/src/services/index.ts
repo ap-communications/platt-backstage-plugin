@@ -1,0 +1,1 @@
+export { setCookieService } from './cookie';

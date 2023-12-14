@@ -23,7 +23,7 @@
     "lint:all": "backstage-cli repo lint",
     "prettier:check": "prettier --check .",
     "release": "changeset version",
-    "new": "backstage-cli new --scope internal"
+    "new": "backstage-cli new --scope platt"
   },
   "workspaces": {
     "packages": [
