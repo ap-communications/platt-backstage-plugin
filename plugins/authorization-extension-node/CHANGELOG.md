@@ -1,5 +1,11 @@
 # @platt/plugin-authorization-extension-node
 
+## 1.0.1
+
+### Patch Changes
+
+- 4b8e344: update several basement dependencies
+
 ## 1.0.0
 
 ### Major Changes
