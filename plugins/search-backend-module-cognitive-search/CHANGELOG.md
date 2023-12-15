@@ -1,5 +1,11 @@
 # @platt/plugin-search-backend-module-cognitive-search
 
+## 1.3.2
+
+### Patch Changes
+
+- faddf57: update several basement dependencies
+
 ## 1.3.1
 
 ### Patch Changes
