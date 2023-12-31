@@ -59,7 +59,7 @@ async function main() {
 Install frontend library plugin
 
 ```
-yarn add --cwd packages/backend @platt/plugin-authorization-extension-react
+yarn add --cwd packages/app @platt/plugin-authorization-extension-react
 
 ```
 
