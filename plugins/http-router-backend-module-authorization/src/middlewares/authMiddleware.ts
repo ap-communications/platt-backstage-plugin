@@ -1,4 +1,5 @@
 import type { Config } from '@backstage/config';
+import lzstring from 'lz-string';
 import { getBearerTokenFromAuthorizationHeader } from '@backstage/plugin-auth-node';
 import { IdentityApi } from '@backstage/plugin-auth-node';
 import { TokenManager } from '@backstage/backend-common';
@@ -6,6 +7,7 @@ import { Response, RequestHandler } from 'express';
 import { decodeJwt } from 'jose';
 import { URL } from 'url';
 import { Logger } from 'winston';
+import { LoggerService } from '@backstage/backend-plugin-api';
 
 // @see https://github.com/backstage/backstage/blob/master/contrib/docs/tutorials/authenticate-api-requests.md
 
@@ -20,6 +22,7 @@ const setTokenCookie = (
   try {
     const payload = decodeJwt(options.token);
     res.cookie('token', options.token, {
+      encode: lzstring.compressToEncodedURIComponent,
       expires: new Date(payload.exp ? payload.exp * 1000 : 0),
       secure: options.secure,
       sameSite: 'lax',
@@ -34,11 +37,11 @@ const setTokenCookie = (
 
 export type MiddlewarePluginEnvirontment = {
   identity: IdentityApi;
-  logger: Logger;
+  logger: Logger | LoggerService;
   tokenManager: TokenManager;
 }
 
-export const createAuthMiddleware = async (
+export const createAuthMiddleware = (
   config: Config,
   appEnv: MiddlewarePluginEnvirontment
 ) => {
@@ -47,8 +50,12 @@ export const createAuthMiddleware = async (
   const cookieDomain = new URL(baseUrl).hostname;
   const authMiddleware: RequestHandler = async (req, res, next) => {
     try {
+      // Token cookies are compressed to reduce size
+      const cookieToken = lzstring.decompressFromEncodedURIComponent(
+        req.cookies.token,
+      );      
       const token = getBearerTokenFromAuthorizationHeader(req.headers.authorization)
-      || (req.cookies?.token as string | undefined);
+        ?? cookieToken;
       if (!token) {
         appEnv.logger.info(`No token found in request ${req.url} ${req.method}`);
         res.status(401).json({message: 'unauthorized' });

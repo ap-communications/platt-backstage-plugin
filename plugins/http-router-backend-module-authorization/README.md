@@ -1,8 +1,6 @@
-# @platt/plugin-authorization-extension-node
+# @platt/plugin-http-router-backend-module-authorization
 
 This plugin is copied from "[Authanticate API requests](https://github.com/backstage/backstage/blob/master/contrib/docs/tutorials/authenticate-api-requests.md)".
-
-Currently we only tested on old backend system.
 
 As you can see "[Authanticate API requests](https://github.com/backstage/backstage/blob/master/contrib/docs/tutorials/authenticate-api-requests.md)",
 The Backstage backend APIs are available without authentication by defaultl,
@@ -10,14 +8,14 @@ For example, you can access the api endpoint of tech docs contents without authe
 
 This library provide feature to avoid unauthorized access, 
 
-## How to use it on Old Backend system
-
 ### Setup backend
+
+### How to use it on Old Backend system
 
 Install plugin and related modules to backend.
 
 ```
-yarn add --cwd packages/backend @platt/plugin-authorization-extension-node
+yarn add --cwd packages/backend @platt/plugin-http-router-backend-module-authorization
 yarn add --cwd packages/backend cookie-parser
 yarn add --cwd packages/backend --dev @types/cookie-parser
 
@@ -28,7 +26,7 @@ Update routes in packages/backend/src/index.ts
 ```typescript
 // packages/backend/src/index.ts from a create-app deployment
 
-import { createAuthMiddleware, setCookieService } from '@platt/plugin-authorization-extension-node';
+import { createAuthMiddleware, setCookieService } from '@platt/plugin-http-router-backend-module-authorization';
 import cookieParser from 'cookie-parser';
 
 // ...
@@ -52,6 +50,32 @@ async function main() {
 
   // ...
 }
+```
+
+### How to use it on New Backend sytem
+
+Install plugin modules to backend.
+
+```
+yarn add --cwd packages/backend @platt/plugin-http-router-backend-module-authorization
+
+```
+
+update `packages/backend/index.ts`
+
+```typescript
+import { createBackend } from '@backstage/backend-defaults';
+
+const backend = createBackend();
+
+backend.add(import('@backstage/plugin-app-backend/alpha'));
+
+// ... 
+
+backend.add(import('@platt/plugin-http-router-backend-module-authorization'));  // add this line
+
+backend.start();
+
 ```
 
 ### Setup frontend

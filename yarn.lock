@@ -7795,20 +7795,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@platt/plugin-authorization-extension-node@workspace:plugins/authorization-extension-node":
-  version: 0.0.0-use.local
-  resolution: "@platt/plugin-authorization-extension-node@workspace:plugins/authorization-extension-node"
-  dependencies:
-    "@backstage/backend-common": ^0.20.0
-    "@backstage/cli": ^0.25.0
-    "@backstage/plugin-auth-node": ^0.4.2
-    express: ^4.18.2
-    jose: ^5.1.3
-    url: ^0.11.3
-    winston: ^3.10.0
-  languageName: unknown
-  linkType: soft
-
 "@platt/plugin-authorization-extension-react@workspace:plugins/authorization-extension-react":
   version: 0.0.0-use.local
   resolution: "@platt/plugin-authorization-extension-react@workspace:plugins/authorization-extension-react"
@@ -7821,6 +7807,25 @@ __metadata:
     "@testing-library/react": ^12.1.3
   peerDependencies:
     react: ^16.13.1 || ^17.0.0 || ^18.0.0
+  languageName: unknown
+  linkType: soft
+
+"@platt/plugin-http-router-backend-module-authorization@workspace:plugins/http-router-backend-module-authorization":
+  version: 0.0.0-use.local
+  resolution: "@platt/plugin-http-router-backend-module-authorization@workspace:plugins/http-router-backend-module-authorization"
+  dependencies:
+    "@backstage/backend-app-api": ^0.5.9
+    "@backstage/backend-common": ^0.20.0
+    "@backstage/backend-plugin-api": ^0.6.8
+    "@backstage/cli": ^0.25.0
+    "@backstage/plugin-auth-node": ^0.4.2
+    "@types/cookie-parser": ^1.4.6
+    cookie-parser: ^1.4.6
+    express: ^4.18.2
+    jose: ^5.1.3
+    lz-string: ^1.5.0
+    url: ^0.11.3
+    winston: ^3.10.0
   languageName: unknown
   linkType: soft
 
@@ -10653,6 +10658,15 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: 4dee3d966fb527b98f0cbbdcf6977c9193fc3204ed539b7522fe5e64dfa45f9017bdda4ffb1f760062262fce7701a0ee1c2f6ce2e50af36c74d4e37052303172
+  languageName: node
+  linkType: hard
+
+"@types/cookie-parser@npm:^1.4.6":
+  version: 1.4.6
+  resolution: "@types/cookie-parser@npm:1.4.6"
+  dependencies:
+    "@types/express": "*"
+  checksum: b1bbb17bc4189c0e953d4996b3b58bfa20161c27db21f98353e237032e7559aec733735d8902c283300e0a4cded20e62b1a5086af608608ef30a45387e080360
   languageName: node
   linkType: hard
 
@@ -14720,7 +14734,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie-parser@npm:^1.4.5":
+"cookie-parser@npm:^1.4.5, cookie-parser@npm:^1.4.6":
   version: 1.4.6
   resolution: "cookie-parser@npm:1.4.6"
   dependencies:
