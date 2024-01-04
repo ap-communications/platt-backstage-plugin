@@ -1,5 +1,11 @@
 # @platt/plugin-authorization-extension-react
 
+## 1.1.1
+
+### Patch Changes
+
+- a423289: Update document becase backend plugin is renamed.
+
 ## 1.1.0
 
 ### Minor Changes

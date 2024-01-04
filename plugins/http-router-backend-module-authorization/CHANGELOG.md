@@ -1,5 +1,15 @@
 # @platt/plugin-authorization-extension-node
 
+## 2.0.0
+
+### Major Changes
+
+- ce04738: Change package name from @platt/plugin-authorization-extension-node to @platt/plugin-http-router-backend-module-authorization
+
+  - rename packaga
+  - reduce cookie token size
+  - add interface for new backend system
+
 ## 1.1.0
 
 ### Minor Changes
