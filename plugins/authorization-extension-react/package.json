@@ -1,7 +1,7 @@
 {
   "name": "@platt/plugin-authorization-extension-react",
   "description": "Web library for the authorizatoin-extension plugin",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "main": "src/index.ts",
   "types": "src/index.ts",
   "license": "Apache-2.0",

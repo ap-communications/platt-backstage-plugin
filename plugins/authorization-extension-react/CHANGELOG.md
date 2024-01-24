@@ -1,5 +1,16 @@
 # @platt/plugin-authorization-extension-react
 
+## 1.2.0
+
+### Minor Changes
+
+- 152de66: bump backstage from v1.21.1 to v1.22.1
+
+### Patch Changes
+
+- 5e2f77a: Bump react-use from 17.4.2 to 17.4.3
+- 6da3258: Bump react-use from 17.4.3 to 17.4.4
+
 ## 1.1.1
 
 ### Patch Changes

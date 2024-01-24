@@ -1,5 +1,11 @@
 # @platt/plugin-authorization-extension-node
 
+## 2.1.0
+
+### Minor Changes
+
+- 152de66: bump backstage from v1.21.1 to v1.22.1
+
 ## 2.0.0
 
 ### Major Changes
