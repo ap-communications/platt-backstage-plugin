@@ -1,5 +1,11 @@
 # @platt/plugin-authorization-extension-node
 
+## 2.1.1
+
+### Patch Changes
+
+- 220caa4: bump jose from 5.1.3 to 5.2.2
+
 ## 2.1.0
 
 ### Minor Changes
