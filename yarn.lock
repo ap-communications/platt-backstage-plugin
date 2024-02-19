@@ -7881,7 +7881,7 @@ __metadata:
     "@types/cookie-parser": ^1.4.6
     cookie-parser: ^1.4.6
     express: ^4.18.2
-    jose: ^5.1.3
+    jose: ^5.2.0
     lz-string: ^1.5.0
     url: ^0.11.3
     winston: ^3.10.0
@@ -20985,10 +20985,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jose@npm:^5.1.3":
-  version: 5.1.3
-  resolution: "jose@npm:5.1.3"
-  checksum: c0225c3408b1c3fcfc40c68161e5e14d554c606ffa428250e0db618469df52f4ce32c69918e296c8c299db1081981638096be838426f61d926269d35602fd814
+"jose@npm:^5.2.0":
+  version: 5.2.2
+  resolution: "jose@npm:5.2.2"
+  checksum: d23def3c1df8aae1ae59d1c027a073804034fe8b971dafe51f0452ca8f6eb7e5cd3e3c90b6e544776443e01e58c8f8eefbd1984dbcde378e693e0ebbd176584d
   languageName: node
   linkType: hard
 
