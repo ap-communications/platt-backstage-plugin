@@ -1,5 +1,11 @@
 # @platt/plugin-search-backend-module-cognitive-search
 
+## 1.8.0
+
+### Minor Changes
+
+- 1eb27d3: Bump backstage from v1.24.2 to v1.25.0
+
 ## 1.7.0
 
 ### Minor Changes
