@@ -1,5 +1,11 @@
 # @platt/plugin-search-backend-module-cognitive-search
 
+## 1.9.0
+
+### Minor Changes
+
+- 781bc28: supports new backend system
+
 ## 1.8.0
 
 ### Minor Changes
