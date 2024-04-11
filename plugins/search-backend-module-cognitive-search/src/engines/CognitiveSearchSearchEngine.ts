@@ -58,7 +58,7 @@ export class CognitiveSearchSearchEngine<T extends IndexableDocument = DefaultBa
   }) {
     this.logger = options.logger;
     this.searchIndexDefinitions = options.searchIndexDefinitions;
-    this.defaultAnalyzerName = options.defaultAnalyzerName;
+    this.defaultAnalyzerName = options.defaultAnalyzerName || options.config.getOptionalString('search.cognitiveSearch.defaultAnalyzerName');
 
     const uuidTag = uuid();
     this.translatorOption = {

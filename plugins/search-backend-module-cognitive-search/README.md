@@ -47,7 +47,38 @@ search:
 
 ```
 
-### 
+### New backend system
+
+Update packages/backend/index.ts
+
+```
+import { createBackend } from '@backstage/backend-defaults';
+
+const backend = createBackend();
+
+backend.add(import('@backstage/plugin-app-backend/alpha'));
+
+// ... 
+
+backend.add(import('@platt/plugin-search-backend-module-cognitive-search'));  // add this line
+
+backend.start();
+```
+
+If you want to configure default analyzer type for cognitive search, you can describe the type like this.
+
+```yaml
+search:
+  cognitiveSearch:
+    endpoint: https://<your service name>.search.windows.net
+    defaultAnalyzerName: 'ja.microsoft'   # add this line
+
+```
+
+`defaultAnalyzerName` can be specifies the [supported language analyzers](https://learn.microsoft.com/en-us/azure/search/index-add-language-analyzers#supported-language-analyzers) of cognitive search.
+
+
+### Old backend system
 
 Here is the sample code for using Cognitive Search plugin.
 
@@ -69,6 +100,8 @@ export default async function createPlugin(
     searchEngine,
   });
 
+...
+};
 ```
 
 You can define `defaultAnalyzerName` for cognitive search indexes.
@@ -76,7 +109,6 @@ For example, our catalog or techdocs is written by Japanese, so we'd like to use
 'ja.microsoft' analyzer.
 
 `defaultAnalyzerName` can be specifies the [supported language analyzers](https://learn.microsoft.com/en-us/azure/search/index-add-language-analyzers#supported-language-analyzers) of cognitive search.
-
 
 
 ## Indexable document
@@ -192,11 +224,14 @@ CognitiveSearchSearchEngine.fromConfig<ExtendedDocumentType>(env.config, {
           transformer: extranSchema2Transformer,
           fields: extraSchema2
         }
+      ]
     })
 ```
 
 Extra schemas will be merged to default schemas applied automatically.
 
+I'm sorry to say but we did not provide this feature for the new backend system.
+If you want to use this feature, you should create your own module description.
 
 
 ## License
