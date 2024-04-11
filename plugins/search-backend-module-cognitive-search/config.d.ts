@@ -12,6 +12,13 @@ export interface Config {
        */
       indexName?: string;
       /**
+       * Cognintive search default analyzer name
+       * You can find the list of available analyzers in https://learn.microsoft.com/en-us/azure/search/index-add-language-analyzers#supported-language-analyzers
+       * default is en.lucene
+       * @visibility backend
+       */
+      defaultAnalyzerName?: string;
+      /**
        * Highlight options for cognitive search
        * @visibility backend
        */
