@@ -1,5 +1,11 @@
 # @platt/plugin-authorization-extension-react
 
+## 1.6.0
+
+### Minor Changes
+
+- 3d56f8f: Bump backstage from 1.25.0 to 1.26.3
+
 ## 1.5.0
 
 ### Minor Changes
