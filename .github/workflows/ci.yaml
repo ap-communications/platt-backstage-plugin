@@ -33,7 +33,7 @@ jobs:
       - name: Run install
         uses: borales/actions-yarn@v5
         with:
-          cmd: install # will run `yarn install` command
+          cmd: install --immutable
       - name: Lint all
         uses: borales/actions-yarn@v5
         with:
