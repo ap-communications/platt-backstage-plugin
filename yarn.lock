@@ -5268,8 +5268,8 @@ __metadata:
   linkType: hard
 
 "@changesets/cli@npm:^2.27.2":
-  version: 2.27.2
-  resolution: "@changesets/cli@npm:2.27.2"
+  version: 2.27.3
+  resolution: "@changesets/cli@npm:2.27.3"
   dependencies:
     "@babel/runtime": ^7.20.1
     "@changesets/apply-release-plan": ^7.0.1
@@ -5305,7 +5305,7 @@ __metadata:
     tty-table: ^4.1.5
   bin:
     changeset: bin.js
-  checksum: eedd67501b7ba1c127ecbf8a4d3ec8cd02f99873cde0dbfc4dce33483acedfc062c6bf4acb5dd58305760bf514f941256c5461f18529fafbea1c15ccec51b2a2
+  checksum: e3b0bb3a123f71701f3b76e80104968fdf99a7403b97860631ed6f98f7ba0df5d9fb56767191fa46148372a0b35d44f7883decb2b70f60d5fa2716692332c0fd
   languageName: node
   linkType: hard
 
