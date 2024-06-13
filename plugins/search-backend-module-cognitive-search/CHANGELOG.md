@@ -1,5 +1,11 @@
 # @platt/plugin-search-backend-module-cognitive-search
 
+## 1.10.2
+
+### Patch Changes
+
+- c06479c: Bump @azure/identity from ^4.0.0 to ^4.2.1
+
 ## 1.10.1
 
 ### Patch Changes
