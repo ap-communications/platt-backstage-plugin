@@ -10,7 +10,11 @@
     "types": "dist/index.d.ts"
   },
   "backstage": {
-    "role": "backend-plugin"
+    "role": "backend-plugin",
+    "pluginId": "search",
+    "pluginPackages": [
+      "@platt/plugin-search-backend-module-cognitive-search"
+    ]
   },
   "scripts": {
     "start": "backstage-cli package start",

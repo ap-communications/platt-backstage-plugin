@@ -11,7 +11,11 @@
     "types": "dist/index.d.ts"
   },
   "backstage": {
-    "role": "web-library"
+    "role": "web-library",
+    "pluginId": "authorization-extension",
+    "pluginPackages": [
+      "@platt/plugin-authorization-extension-react"
+    ]
   },
   "sideEffects": false,
   "scripts": {
