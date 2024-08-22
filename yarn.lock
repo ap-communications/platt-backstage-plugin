@@ -3042,7 +3042,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@backstage/backend-app-api@npm:^0.9.1, @backstage/backend-app-api@npm:^0.9.2":
+"@backstage/backend-app-api@npm:^0.9.1":
   version: 0.9.2
   resolution: "@backstage/backend-app-api@npm:0.9.2"
   dependencies:
@@ -8673,40 +8673,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@platt/plugin-authorization-extension-react@workspace:plugins/authorization-extension-react":
-  version: 0.0.0-use.local
-  resolution: "@platt/plugin-authorization-extension-react@workspace:plugins/authorization-extension-react"
-  dependencies:
-    "@backstage/cli": ^0.27.0
-    "@backstage/core-plugin-api": ^1.9.3
-    "@backstage/test-utils": ^1.5.10
-    "@material-ui/core": ^4.12.2
-    "@testing-library/jest-dom": ^6.0.0
-    "@testing-library/react": ^14.0.0
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0
-  languageName: unknown
-  linkType: soft
-
-"@platt/plugin-http-router-backend-module-authorization@workspace:plugins/http-router-backend-module-authorization":
-  version: 0.0.0-use.local
-  resolution: "@platt/plugin-http-router-backend-module-authorization@workspace:plugins/http-router-backend-module-authorization"
-  dependencies:
-    "@backstage/backend-app-api": ^0.9.2
-    "@backstage/backend-common": ^0.24.0
-    "@backstage/backend-plugin-api": ^0.8.0
-    "@backstage/cli": ^0.27.0
-    "@backstage/plugin-auth-node": ^0.5.0
-    "@types/cookie-parser": ^1.4.6
-    cookie-parser: ^1.4.6
-    express: ^4.18.2
-    jose: ^5.2.0
-    lz-string: ^1.5.0
-    url: ^0.11.3
-    winston: ^3.10.0
-  languageName: unknown
-  linkType: soft
-
 "@platt/plugin-search-backend-module-cognitive-search@workspace:^, @platt/plugin-search-backend-module-cognitive-search@workspace:plugins/search-backend-module-cognitive-search":
   version: 0.0.0-use.local
   resolution: "@platt/plugin-search-backend-module-cognitive-search@workspace:plugins/search-backend-module-cognitive-search"
@@ -11603,15 +11569,6 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: 4dee3d966fb527b98f0cbbdcf6977c9193fc3204ed539b7522fe5e64dfa45f9017bdda4ffb1f760062262fce7701a0ee1c2f6ce2e50af36c74d4e37052303172
-  languageName: node
-  linkType: hard
-
-"@types/cookie-parser@npm:^1.4.6":
-  version: 1.4.7
-  resolution: "@types/cookie-parser@npm:1.4.7"
-  dependencies:
-    "@types/express": "*"
-  checksum: 7b87c59420598e686a57e240be6e0db53967c3c8814be9326bf86609ee2fc39c4b3b9f2263e1deba43526090121d1df88684b64c19f7b494a80a4437caf3d40b
   languageName: node
   linkType: hard
 
@@ -15398,7 +15355,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie-parser@npm:^1.4.5, cookie-parser@npm:^1.4.6":
+"cookie-parser@npm:^1.4.5":
   version: 1.4.6
   resolution: "cookie-parser@npm:1.4.6"
   dependencies:
@@ -21449,7 +21406,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jose@npm:^5.0.0, jose@npm:^5.2.0":
+"jose@npm:^5.0.0":
   version: 5.2.4
   resolution: "jose@npm:5.2.4"
   checksum: 81e1f4494f406debd14392975327f0daa8b88ff09c83f2fe94754dcd7cfdefdb1adf785b2ec7481751927e609d342581cd41cb444628ef62fca423facebcd280
@@ -30657,7 +30614,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"url@npm:^0.11.0, url@npm:^0.11.3, url@npm:~0.11.0":
+"url@npm:^0.11.0, url@npm:~0.11.0":
   version: 0.11.4
   resolution: "url@npm:0.11.4"
   dependencies:
@@ -31426,7 +31383,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"winston@npm:^3.10.0, winston@npm:^3.2.1":
+"winston@npm:^3.2.1":
   version: 3.11.0
   resolution: "winston@npm:3.11.0"
   dependencies:
