@@ -36,7 +36,7 @@
     "@backstage/plugin-search-common": "^1.2.14",
     "@backstage/plugin-techdocs-node": "^1.12.9",
     "@types/express": "*",
-    "express": "^4.17.1",
+    "express": "^4.21.0",
     "express-promise-router": "^4.1.0",
     "node-fetch": "^2.6.7",
     "p-queue": "^6.6.2",
