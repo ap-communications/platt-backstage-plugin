@@ -1,5 +1,12 @@
 # @platt/plugin-search-backend-module-cognitive-search
 
+## 1.11.1
+
+### Patch Changes
+
+- 95fc3d8: Bump express from 4.19.2 to 4.21.0
+- 71cfc5d: Bump backstage from 1.30.2 to 1.31.1
+
 ## 1.11.0
 
 ### Minor Changes
