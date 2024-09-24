@@ -9,7 +9,7 @@
 #
 # Once the commands have been run, you can build the image using `yarn build-image`
 
-FROM node:18-bookworm-slim
+FROM node:20-bookworm-slim
 
 # Set Python interpreter for `node-gyp` to use
 ENV PYTHON /usr/bin/python3
@@ -24,7 +24,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 # in which case you should also move better-sqlite3 to "devDependencies" in package.json.
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
-    apt-get install -y --no-install-recommends libsqlite3-dev
+    apt-get install -y --no-install-recommends libsqlite3-dev && \
+    rm -rf /var/lib/apt/lists/*
 
 # From here on we use the least-privileged `node` user to run the backend.
 USER node
@@ -36,6 +37,9 @@ WORKDIR /app
 
 # This switches many Node.js dependencies to production mode.
 ENV NODE_ENV production
+
+# This disables node snapshot for Node 20 to work with the Scaffolder
+ENV NODE_OPTIONS "--no-node-snapshot"
 
 # Copy over Yarn 3 configuration, release, and plugins
 COPY --chown=node:node .yarn ./.yarn
