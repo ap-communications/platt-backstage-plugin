@@ -5,13 +5,12 @@ on:
       - 'release-*'
   workflow_dispatch:
 
+env:
+  NODE_VERSION : '20'
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x]
 
     steps:
       - name: Checkout repository
@@ -19,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ env.NODE_VERSION }}
 
       # Get the yarn cache path.
       - name: Get yarn cache directory path
@@ -53,9 +52,6 @@ jobs:
     runs-on: ubuntu-latest
 
     environment: npm-platt-oss
-    strategy:
-      matrix:
-        node-version: [18.x]
 
     steps:
       - name: Checkout repository
@@ -64,7 +60,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
       # Get the yarn cache path.
