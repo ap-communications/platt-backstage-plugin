@@ -1,24 +1,25 @@
 name: CI
 on:
-  pull_request_target:
+  pull_request:
   workflow_dispatch:
-
-env:
-  NODE_VERSION : '20'
 
 jobs:
   build:
-    name: Continuous Test
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [20.x]
+
+    name: Test ${{ matrix.node-version }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: "refs/pull/${{ github.event.number }}/merge"
 
       - name: Set Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version: ${{ matrix.node-version }}
 
       # Get the yarn cache path.
       - name: Get yarn cache directory path
@@ -29,9 +30,9 @@ jobs:
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: yarn-cache-folder-${{ hashFiles('**/yarn.lock', '.yarnrc.yml') }}
+          key: yarn-cache-folder-${{ matrix.node-version }}-${{ hashFiles('**/yarn.lock', '.yarnrc.yml') }}
           restore-keys: |
-            yarn-cache-folder-
+            yarn-cache-folder-${{ matrix.node-version }}
 
       - name: Run install
         uses: borales/actions-yarn@v5
