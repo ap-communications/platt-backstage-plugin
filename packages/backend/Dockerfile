@@ -44,6 +44,7 @@ ENV NODE_OPTIONS "--no-node-snapshot"
 # Copy over Yarn 3 configuration, release, and plugins
 COPY --chown=node:node .yarn ./.yarn
 COPY --chown=node:node .yarnrc.yml ./
+COPY --chown=node:node backstage.json ./
 
 # Copy repo skeleton first, to avoid unnecessary docker cache invalidation.
 # The skeleton contains the package.json of each package in the monorepo,
