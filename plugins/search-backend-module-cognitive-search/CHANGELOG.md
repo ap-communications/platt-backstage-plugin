@@ -1,5 +1,17 @@
 # @platt/plugin-search-backend-module-cognitive-search
 
+## 1.11.2
+
+### Patch Changes
+
+- 81641f0: Bump backstage from 1.31.1 to 1.36.1
+
+  and update several things
+
+  - remove unused node-fetch module
+
+- b17d825: removed unused dependency '@backstage/backend-common'
+
 ## 1.11.1
 
 ### Patch Changes
