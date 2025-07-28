@@ -16860,10 +16860,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"component-emitter@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "component-emitter@npm:1.3.0"
-  checksum: 10/dfc1ec2e7aa2486346c068f8d764e3eefe2e1ca0b24f57506cd93b2ae3d67829a7ebd7cc16e2bf51368fac2f45f78fcff231718e40b1975647e4a86be65e1d05
+"component-emitter@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "component-emitter@npm:1.3.1"
+  checksum: 10/94550aa462c7bd5a61c1bc480e28554aa306066930152d1b1844a0dd3845d4e5db7e261ddec62ae184913b3e59b55a2ad84093b9d3596a8f17c341514d6c483d
   languageName: node
   linkType: hard
 
@@ -17890,6 +17890,18 @@ __metadata:
   dependencies:
     ms: "npm:^2.1.1"
   checksum: 10/d86fd7be2b85462297ea16f1934dc219335e802f629ca9a69b63ed8ed041dda492389bb2ee039217c02e5b54792b1c51aa96ae954cf28634d363a2360c7a1639
+  languageName: node
+  linkType: hard
+
+"debug@npm:^4.3.7":
+  version: 4.4.1
+  resolution: "debug@npm:4.4.1"
+  dependencies:
+    ms: "npm:^2.1.3"
+  peerDependenciesMeta:
+    supports-color:
+      optional: true
+  checksum: 10/8e2709b2144f03c7950f8804d01ccb3786373df01e406a0f66928e47001cf2d336cbed9ee137261d4f90d68d8679468c755e3548ed83ddacdc82b194d2468afe
   languageName: node
   linkType: hard
 
@@ -20143,6 +20155,19 @@ __metadata:
   linkType: hard
 
 "form-data@npm:^4.0.0, form-data@npm:^4.0.1":
+  version: 4.0.4
+  resolution: "form-data@npm:4.0.4"
+  dependencies:
+    asynckit: "npm:^0.4.0"
+    combined-stream: "npm:^1.0.8"
+    es-set-tostringtag: "npm:^2.1.0"
+    hasown: "npm:^2.0.2"
+    mime-types: "npm:^2.1.12"
+  checksum: 10/a4b62e21932f48702bc468cc26fb276d186e6b07b557e3dd7cc455872bdbb82db7db066844a64ad3cf40eaf3a753c830538183570462d3649fdfd705601cbcfb
+  languageName: node
+  linkType: hard
+
+"form-data@npm:^4.0.4":
   version: 4.0.4
   resolution: "form-data@npm:4.0.4"
   dependencies:
@@ -28017,7 +28042,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qs@npm:^6.10.1, qs@npm:^6.10.3, qs@npm:^6.11.0, qs@npm:^6.12.2, qs@npm:^6.12.3, qs@npm:^6.14.0, qs@npm:^6.9.4":
+"qs@npm:^6.10.1, qs@npm:^6.10.3, qs@npm:^6.11.2, qs@npm:^6.12.2, qs@npm:^6.12.3, qs@npm:^6.14.0, qs@npm:^6.9.4":
   version: 6.14.0
   resolution: "qs@npm:6.14.0"
   dependencies:
@@ -31044,30 +31069,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"superagent@npm:^10.2.2":
-  version: 10.2.2
-  resolution: "superagent@npm:10.2.2"
+"superagent@npm:^10.2.3":
+  version: 10.2.3
+  resolution: "superagent@npm:10.2.3"
   dependencies:
-    component-emitter: "npm:^1.3.0"
+    component-emitter: "npm:^1.3.1"
     cookiejar: "npm:^2.1.4"
-    debug: "npm:^4.3.4"
+    debug: "npm:^4.3.7"
     fast-safe-stringify: "npm:^2.1.1"
-    form-data: "npm:^4.0.0"
+    form-data: "npm:^4.0.4"
     formidable: "npm:^3.5.4"
     methods: "npm:^1.1.2"
     mime: "npm:2.6.0"
-    qs: "npm:^6.11.0"
-  checksum: 10/e89ae49163df0db50e6a77316a7304a16640df11a8d2219bef11e69f59c74e54c16670ec250c2ab59f06887f71bb5d6e5933f735b931cbdbe34ba490d78b5d70
+    qs: "npm:^6.11.2"
+  checksum: 10/377bf938e68927dd772169c5285be27872bf6e84fac01c52bcd9396bc5b348c9ded8f8be54649510ec09a67bc5096055847b37cb01b3bca0eb06ff1856170e35
   languageName: node
   linkType: hard
 
 "supertest@npm:^7.0.0":
-  version: 7.1.3
-  resolution: "supertest@npm:7.1.3"
+  version: 7.1.4
+  resolution: "supertest@npm:7.1.4"
   dependencies:
     methods: "npm:^1.1.2"
-    superagent: "npm:^10.2.2"
-  checksum: 10/d148d05ed52e2cd487c483aae8721bf83f2611eb630d847b1cb37b3f1b09c499aa6b6446d3739c1db2459df1668bf089870437f71e57fc39c7194f51bdac6119
+    superagent: "npm:^10.2.3"
+  checksum: 10/ecb5d41f2b62b257dbdcabac245c32b8e8fb264fe2636dd85c2c883569d23dc14adc0a471abb84187cbdb49bc36ad870ad355b4a0b85973f510fd57fc229e6cc
   languageName: node
   linkType: hard
 
