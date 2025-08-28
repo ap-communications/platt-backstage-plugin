@@ -50,8 +50,9 @@ jobs:
     needs: build
 
     runs-on: ubuntu-latest
-
-    environment: npm-platt-oss
+    permissions:
+      id-token: write  # Required for OIDC
+      contents: read
 
     steps:
       - name: Checkout repository
@@ -91,15 +92,4 @@ jobs:
 
       - name: publish
         run: |
-          yarn config set -H 'npmAuthToken' "${{secrets.NPM_TOKEN}}"
           yarn workspaces foreach --all -p -j 10 -v --no-private npm publish --access public --tolerate-republish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      # - name: publish
-      #   uses: borales/actions-yarn@v5
-      #   with:
-      #     cmd: workspaces foreach -p -j 10 -v --no-private npm publish --access public --tolerate-republish
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      # add tags to repository
