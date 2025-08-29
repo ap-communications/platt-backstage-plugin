@@ -76,7 +76,8 @@ jobs:
           key: yarn-cache-folder-${{ hashFiles('**/yarn.lock', '.yarnrc.yml') }}
           restore-keys: |
             yarn-cache-folder-
-
+      - name: update npm
+        run: npm install -g npm
       - name: yarn install
         uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88 # v5.0.0
         with:
@@ -92,5 +93,4 @@ jobs:
 
       - name: publish
         run: |
-          yarn config set -H 'npmAuthToken' ${NODE_AUTH_TOKEN}
           yarn workspaces foreach --all -p -j 10 -v --no-private npm publish --access public --tolerate-republish
