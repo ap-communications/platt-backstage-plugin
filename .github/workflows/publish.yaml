@@ -92,4 +92,5 @@ jobs:
 
       - name: publish
         run: |
+          yarn config set -H 'npmAuthToken' '${NODE_AUTH_TOKEN}'
           yarn workspaces foreach --all -p -j 10 -v --no-private npm publish --access public --tolerate-republish
