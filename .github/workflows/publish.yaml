@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  NODE_VERSION : '20'
+  NODE_VERSION : '22'
 
 jobs:
   build:
@@ -51,6 +51,9 @@ jobs:
 
     runs-on: ubuntu-latest
     environment: npm-platt-oss
+    permissions:
+      id-token: write  # Required for OIDC
+      contents: read
 
     steps:
       - name: Checkout repository
@@ -89,7 +92,4 @@ jobs:
 
       - name: publish
         run: |
-          yarn config set -H 'npmAuthToken' "${{secrets.NPM_TOKEN}}"
           yarn workspaces foreach --all -p -j 10 -v --no-private npm publish --access public --tolerate-republish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
