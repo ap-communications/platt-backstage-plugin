@@ -12,10 +12,10 @@
 # Alternatively, there is also a multi-stage Dockerfile documented here:
 # https://backstage.io/docs/deployment/docker#multi-stage-build
  
-FROM node:20-bookworm-slim
+FROM node:22-bookworm-slim
 
 # Set Python interpreter for `node-gyp` to use
-ENV PYTHON /usr/bin/python3
+ENV PYTHON=/usr/bin/python3
 
 # Install isolate-vm dependencies, these are needed by the @backstage/plugin-scaffolder-backend.
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
@@ -39,10 +39,10 @@ USER node
 WORKDIR /app
 
 # This switches many Node.js dependencies to production mode.
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 # This disables node snapshot for Node 20 to work with the Scaffolder
-ENV NODE_OPTIONS "--no-node-snapshot"
+ENV NODE_OPTIONS="--no-node-snapshot"
 
 # Copy over Yarn 3 configuration, release, and plugins
 COPY --chown=node:node .yarn ./.yarn
