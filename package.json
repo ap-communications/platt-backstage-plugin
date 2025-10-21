@@ -55,7 +55,7 @@
       "prettier --write"
     ]
   },
-  "packageManager": "yarn@4.5.0",
+  "packageManager": "yarn@4.10.3",
   "dependencies": {
     "@platt/plugin-search-backend-module-cognitive-search": "workspace:^"
   }
