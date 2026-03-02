@@ -1,5 +1,11 @@
 # @platt/plugin-search-backend-module-cognitive-search
 
+## 1.11.6
+
+### Patch Changes
+
+- 964a1b6: Bump backstage from 1.47.1 to 1.48.3
+
 ## 1.11.5
 
 ### Patch Changes
