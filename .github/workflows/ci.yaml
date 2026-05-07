@@ -36,22 +36,12 @@ jobs:
             yarn-cache-folder-${{ matrix.node-version }}
 
       - name: Run install
-        uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88 # v5.0.0
-        with:
-          cmd: install --immutable
+        run: yarn install --immutable
       - name: Lint all
-        uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88 # v5.0.0
-        with:
-          cmd: lint:all
+        run: yarn lint:all
       - name: check for missing repo fixies
-        uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88 # v5.0.0
-        with:
-          cmd: fix --check
+        run: yarn fix --check
       - name: Compile the app
-        uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88 # v5.0.0
-        with:
-          cmd: tsc
+        run: yarn tsc
       - name: Test the app
-        uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88 # v5.0.0
-        with:
-          cmd: test:all
+        run: yarn test:all

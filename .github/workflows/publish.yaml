@@ -34,17 +34,11 @@ jobs:
             yarn-cache-folder-
 
       - name: yarn install
-        uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88 # v5.0.0
-        with:
-          cmd: install --immutable
+        run: yarn install --immutable
       - name: yarn tsc
-        uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88 # v5.0.0
-        with:
-          cmd: tsc
+        run: yarn tsc
       - name: yarn build
-        uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88 # v5.0.0
-        with:
-          cmd: build:all
+        run: yarn build:all
 
   release:
     needs: build
@@ -78,17 +72,11 @@ jobs:
           restore-keys: |
             yarn-cache-folder-
       - name: yarn install
-        uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88 # v5.0.0
-        with:
-          cmd: install --immutable
+        run: yarn install --immutable
       - name: yarn tsc
-        uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88 # v5.0.0
-        with:
-          cmd: tsc
+        run: yarn tsc
       - name: yarn build repo
-        uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88 # v5.0.0
-        with:
-          cmd: backstage-cli repo build
+        run: yarn backstage-cli repo build
 
       - name: publish
         run: |
