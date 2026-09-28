@@ -5404,14 +5404,14 @@ __metadata:
   linkType: hard
 
 "@jest/environment-jsdom-abstract@npm:^30.0.0":
-  version: 30.5.1
-  resolution: "@jest/environment-jsdom-abstract@npm:30.5.1"
+  version: 30.5.2
+  resolution: "@jest/environment-jsdom-abstract@npm:30.5.2"
   dependencies:
-    "@jest/environment": "npm:30.5.1"
-    "@jest/fake-timers": "npm:30.5.1"
+    "@jest/environment": "npm:30.5.2"
+    "@jest/fake-timers": "npm:30.5.2"
     "@jest/types": "npm:30.5.1"
     "@types/node": "npm:*"
-    jest-mock: "npm:30.5.1"
+    jest-mock: "npm:30.5.2"
     jest-util: "npm:30.5.1"
   peerDependencies:
     "@types/jsdom": "*"
@@ -5420,19 +5420,7 @@ __metadata:
   peerDependenciesMeta:
     canvas:
       optional: true
-  checksum: 10/824da6bab186279c8349af3b44cb1d45d31a0331b05ba1d41edba9ffeca446fef9a69bf6d1a67dcd7c41d32579b01e3cc8e9b8601f06b1c6149433b16cb4437c
-  languageName: node
-  linkType: hard
-
-"@jest/environment@npm:30.5.1":
-  version: 30.5.1
-  resolution: "@jest/environment@npm:30.5.1"
-  dependencies:
-    "@jest/fake-timers": "npm:30.5.1"
-    "@jest/types": "npm:30.5.1"
-    "@types/node": "npm:*"
-    jest-mock: "npm:30.5.1"
-  checksum: 10/19be99eeddfbfd33aa0cd065bd410c4095bea4747972b26eb0845c1e9a09989f383f819c742a5872bcba799d23bfcdc4547f88002cf13f1d473e846eab0ac5e1
+  checksum: 10/fafe9b4ea6131fc1ce4abd3caeec84f91671a48bfa015820c6b4fe3814912274d64b7282ac7a8859755a261c88006d324fd54aab3731caad28edb8da5ebdaa64
   languageName: node
   linkType: hard
 
@@ -5473,20 +5461,6 @@ __metadata:
     expect: "npm:30.5.2"
     jest-snapshot: "npm:30.5.2"
   checksum: 10/5d05a885ce180ed007eed09dcb9308a78ea58f6a8924cc1cab0426512abb8ccfe7ed735e3a2307f425460dcd95b67692d2590cbbdebfa84049767b43ba72f2f7
-  languageName: node
-  linkType: hard
-
-"@jest/fake-timers@npm:30.5.1":
-  version: 30.5.1
-  resolution: "@jest/fake-timers@npm:30.5.1"
-  dependencies:
-    "@jest/types": "npm:30.5.1"
-    "@sinonjs/fake-timers": "npm:^15.4.0"
-    "@types/node": "npm:*"
-    jest-message-util: "npm:30.5.1"
-    jest-mock: "npm:30.5.1"
-    jest-util: "npm:30.5.1"
-  checksum: 10/bf83dd689d266496e290883c791b33d9731ad1b40bec056b619a2dda5a48bb32af9a42dcd280d08824000bfab8eaf86a6ef31b4cc54a001b364b5bd2b0b8b052
   languageName: node
   linkType: hard
 
