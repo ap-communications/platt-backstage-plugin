@@ -1,1 +1,0 @@
-export { setTokenCookie } from './cookieAuth';
