@@ -5436,15 +5436,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/expect-utils@npm:30.5.1":
-  version: 30.5.1
-  resolution: "@jest/expect-utils@npm:30.5.1"
-  dependencies:
-    "@jest/get-type": "npm:30.5.0"
-  checksum: 10/6b062302e9d3d2a948321e36a51cbe4f498f4cfb4875997d2a92a7662e8987e54c2cc0c5a9e2e4424212cb038bfd0cec82fe564653b1c62225f1633c9f00cd3e
-  languageName: node
-  linkType: hard
-
 "@jest/expect-utils@npm:30.5.2":
   version: 30.5.2
   resolution: "@jest/expect-utils@npm:30.5.2"
@@ -16833,7 +16824,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expect@npm:30.5.2":
+"expect@npm:30.5.2, expect@npm:^30.0.0":
   version: 30.5.2
   resolution: "expect@npm:30.5.2"
   dependencies:
@@ -16844,20 +16835,6 @@ __metadata:
     jest-mock: "npm:30.5.2"
     jest-util: "npm:30.5.1"
   checksum: 10/92599f21f468172e4be9d6fadc6d373c5d838d1b5fdcc6fc72c9d3a83dafb6c4356bc4142b46622182b9450ab4f2978f19f701f2063ceffc9e02982386d296bf
-  languageName: node
-  linkType: hard
-
-"expect@npm:^30.0.0":
-  version: 30.5.1
-  resolution: "expect@npm:30.5.1"
-  dependencies:
-    "@jest/expect-utils": "npm:30.5.1"
-    "@jest/get-type": "npm:30.5.0"
-    jest-matcher-utils: "npm:30.5.1"
-    jest-message-util: "npm:30.5.1"
-    jest-mock: "npm:30.5.1"
-    jest-util: "npm:30.5.1"
-  checksum: 10/96188067d97c5130d534b8e360d449bce4a85b37c89132cf897fc6de7be2b3f378328e46d7ba925f33b43079bc902f1bbe7492b93af656fd8831f5ddd3ce48f0
   languageName: node
   linkType: hard
 
@@ -20089,18 +20066,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-diff@npm:30.5.1":
-  version: 30.5.1
-  resolution: "jest-diff@npm:30.5.1"
-  dependencies:
-    "@jest/diff-sequences": "npm:30.5.0"
-    "@jest/get-type": "npm:30.5.0"
-    chalk: "npm:^4.1.2"
-    pretty-format: "npm:30.5.1"
-  checksum: 10/0779711058c09db86d1e3aeb9b571df9ede87e951a4f3f3c7082dbf6c5332749ee1d6464b179052418164084741c799ee6f4e08807c370baab40e2681ac500f3
-  languageName: node
-  linkType: hard
-
 "jest-diff@npm:30.5.2":
   version: 30.5.2
   resolution: "jest-diff@npm:30.5.2"
@@ -20180,18 +20145,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-matcher-utils@npm:30.5.1":
-  version: 30.5.1
-  resolution: "jest-matcher-utils@npm:30.5.1"
-  dependencies:
-    "@jest/get-type": "npm:30.5.0"
-    chalk: "npm:^4.1.2"
-    jest-diff: "npm:30.5.1"
-    pretty-format: "npm:30.5.1"
-  checksum: 10/2840450962142eb45d2d8528049368d23dc67c333f93011eb98f0311f7368bd9d297a75965d74052336e4685a266fb71e8fd9fac9513004ac0dbe5fff919741b
-  languageName: node
-  linkType: hard
-
 "jest-matcher-utils@npm:30.5.2":
   version: 30.5.2
   resolution: "jest-matcher-utils@npm:30.5.2"
@@ -20219,18 +20172,6 @@ __metadata:
     slash: "npm:^3.0.0"
     stack-utils: "npm:^2.0.6"
   checksum: 10/bb25344137d71b2e36a24077b0391b78bce07731e70522e2e4f91deb1c0cc08d4e80371985c359e78e91201a7e76936e631aea4b6a0e5271f9fe1dd34f340e9b
-  languageName: node
-  linkType: hard
-
-"jest-mock@npm:30.5.1":
-  version: 30.5.1
-  resolution: "jest-mock@npm:30.5.1"
-  dependencies:
-    "@jest/expect-utils": "npm:30.5.1"
-    "@jest/types": "npm:30.5.1"
-    "@types/node": "npm:*"
-    jest-util: "npm:30.5.1"
-  checksum: 10/41af43d7732d64505285b3f36853c5bb8d489c25e17f4823e6470d6d4083ea481e04f769fa2b5a7e7157c0fe9c229a66462fa79c84733a03cedaebe7a5f9d4da
   languageName: node
   linkType: hard
 
@@ -22870,11 +22811,11 @@ __metadata:
   linkType: hard
 
 "nan@npm:^2.19.0, nan@npm:^2.23.0":
-  version: 2.29.0
-  resolution: "nan@npm:2.29.0"
+  version: 2.30.0
+  resolution: "nan@npm:2.30.0"
   dependencies:
     node-gyp: "npm:latest"
-  checksum: 10/feed70f1358b1c469745d27bfaa0e0d5d307471a8f929a2833822574fe944b3646fca09d36d90bb91eea0cc4a74e4a288e84847d945c8d77d5044378fed7f57e
+  checksum: 10/15f9fd9521a6093eb0719928044f8e4a9b2bdccb8eff17dd8f8d2c372c87f3d5303f07d11f501f833653b436cfc6a8b91a6984c282a1209f46c728b91253566b
   languageName: node
   linkType: hard
 
@@ -24177,17 +24118,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pg-connection-string@npm:^2.14.1":
+"pg-connection-string@npm:^2.14.1, pg-connection-string@npm:^2.3.0":
   version: 2.14.1
   resolution: "pg-connection-string@npm:2.14.1"
   checksum: 10/65708bd753b6fa413f57d2966f0fe42bbeac8c21d7f40721ba084c22bf5d67a85ae53c365e7ab8a158fb8a6ac145e79abefe3afb913a9a5f32dbdad3274d452e
-  languageName: node
-  linkType: hard
-
-"pg-connection-string@npm:^2.3.0":
-  version: 2.14.0
-  resolution: "pg-connection-string@npm:2.14.0"
-  checksum: 10/9434e5fbb918b9224a18ad8b739c3da83940ec95c113a0e38371dbd3e8f84c6e3cbaf4dbfaf36d02a1281b0e844af290a1bc240b8d865a98cae6864d89ee11a0
   languageName: node
   linkType: hard
 
